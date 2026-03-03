@@ -23,7 +23,7 @@ func ConnectTunnelLockdown(device ios.DeviceEntry) (Tunnel, error) {
 }
 
 func connectToTunnelLockdown(ctx context.Context, device ios.DeviceEntry, connToDevice io.ReadWriteCloser) (Tunnel, error) {
-	logrus.Info("connect to lockdown tunnel endpoint on device")
+	logrus.WithField("udid", device.Properties.SerialNumber).Info("connect to lockdown tunnel endpoint on device")
 
 	tunnelInfo, err := exchangeCoreTunnelParameters(connToDevice)
 	if err != nil {
